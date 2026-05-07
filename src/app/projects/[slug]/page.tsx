@@ -1,6 +1,7 @@
 import { projectsData } from "@/lib/data";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { buttonVariants } from "@/components/button";
 import { ArrowLeft } from "lucide-react";
 
@@ -58,6 +59,34 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </h2>
             <div className="bg-muted text-muted-foreground p-4 rounded-lg border-2 border-black overflow-x-auto font-mono text-sm">
               <pre><code>{project.codeSnippet}</code></pre>
+            </div>
+            {project.codeDescription && (
+              <p className="mt-4 text-base font-medium text-foreground italic border-l-4 border-primary pl-4">{project.codeDescription}</p>
+            )}
+          </section>
+
+          <section className="bg-card border-4 border-black p-6 rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <h2 className="text-3xl font-bold mb-4 flex items-center gap-2">
+              <span className="w-4 h-4 bg-accent border-2 border-black rounded-full inline-block"></span>
+              Screenshots / Outputs
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {project.screenshots && project.screenshots.length > 0 ? (
+                project.screenshots.map((src, index) => (
+                  <div key={index} className="relative w-full h-64 border-4 border-black rounded-lg overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-transform">
+                    <Image 
+                      src={src} 
+                      alt={`${project.title} screenshot ${index + 1}`} 
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ))
+              ) : (
+                <div className="col-span-full w-full h-64 border-4 border-dashed border-black rounded-lg flex items-center justify-center bg-muted/50">
+                  <p className="text-muted-foreground font-medium text-lg">Screenshots will be uploaded here.</p>
+                </div>
+              )}
             </div>
           </section>
 

@@ -1,5 +1,5 @@
-import { buttonVariants } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { buttonVariants } from "@/components/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/card";
 import { projectsData } from "@/lib/data";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";

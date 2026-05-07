@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, navigationMenuTriggerStyle } from "./ui/navigation-menu";
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b-4 border-black bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b-4 border-black bg-background/95 backdrop-blur">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center space-x-2 font-bold text-2xl tracking-tight text-primary">
           <div className="bg-primary text-primary-foreground px-2 py-1 border-2 border-black rounded-md transform -rotate-2 hover:rotate-0 transition-transform">
@@ -11,24 +10,20 @@ export function Navbar() {
           </div>
           <span>Portfolio</span>
         </Link>
-        <NavigationMenu>
-          <NavigationMenuList className="space-x-2">
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} border-2 border-transparent hover:border-black hover:bg-accent rounded-full transition-all`}>
-                <Link href="/">
-                  Home
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} border-2 border-transparent hover:border-black hover:bg-accent rounded-full transition-all`}>
-                <Link href="/#projects">
-                  Projects
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+        <nav>
+          <ul className="flex items-center space-x-2">
+            <li>
+              <Link href="/" className="inline-flex h-9 items-center justify-center rounded-lg px-4 py-2 text-sm font-medium border-2 border-transparent hover:border-black hover:bg-accent transition-all">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href="/#projects" className="inline-flex h-9 items-center justify-center rounded-lg px-4 py-2 text-sm font-medium border-2 border-transparent hover:border-black hover:bg-accent transition-all">
+                Projects
+              </Link>
+            </li>
+          </ul>
+        </nav>
       </div>
     </header>
   );

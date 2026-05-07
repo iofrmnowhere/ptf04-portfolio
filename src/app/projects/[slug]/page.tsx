@@ -1,7 +1,7 @@
 import { projectsData } from "@/lib/data";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/button";
 import { ArrowLeft } from "lucide-react";
 
 export async function generateStaticParams() {

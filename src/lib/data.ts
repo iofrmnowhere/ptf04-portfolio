@@ -39,7 +39,7 @@ export const projectsData: Project[] = [
       print('Mean Absolute Error:', mae)
       print('R2 Score:', r2)`,
     codeDescription: "After reshaping the temperature array into a 2D column vector, the model is fit and used to generate predictions. The four evaluation metrics measured how accurate the model was, although each one was for a different purpose, it nevertheless measured how effective the model was.",
-    screenshots: [],
+    screenshots: ["/LinearRegression.png"],
     techStack: ["Python", "NumPy", "scikit-learn", "Matplotlib", "Google Colab"],
     challenges: "As a first encounter with machine learning, both the concepts and the tooling were unfamiliar to me. Learning and understanding the syntax, why certain code blocks existed, and how to graph the values were all learned  through this project.",
     reflection: "This was my entry point into machine learning, and it made me genuinely curious about the field. Seeing a model learn a pattern from data and then visualize it as a line cutting through a scatter plot made the concept click in a way that theory alone wouldn't have. It’s the foundation for every ML project I've worked on since.",
@@ -71,7 +71,7 @@ export const projectsData: Project[] = [
       model.fit(X, y)
       y_pred = model.predict(X)`,
     codeDescription: "The Pipeline handles scaling and training in one step. The network has two layers of 50 neurons and uses ReLU activation.",
-    screenshots: [],
+    screenshots: ["/plantgrowth_NN.png"],
     techStack: ["Python", "NumPy", "MLPRegressor", "scikit-learn", "Matplotlib", "Google Colab"],
     challenges: "Coming from linear regression, this felt like a big jump. There were a lot of new parameters to understand — hidden layers, activation functions, solvers — and it wasn't immediately obvious what each one was doing or why it mattered.",
     reflection: "I came out of this realizing that different models think about data differently. The neural network curved where the linear model stayed flat, and that small visual difference said a lot about why model choice matters.",
@@ -97,7 +97,7 @@ export const projectsData: Project[] = [
           classification = knn.predict([[sepal_length, sepal_width, petal_length, petal_width]])
     return iris.target_names[classification][0]`,
     codeDescription: "The model is trained on the full dataset, then wrapped in an Anvil-callable function. This lets the Anvil frontend send measurements and get a species prediction back in real time, connecting the model to an actual user-facing interface.",
-    screenshots: [],
+    screenshots: ["/iris1.png", "/iris2.png", "/iris3.png"],
     techStack: ["Python", "scikit-learn", "KNeighborsClassifier", "Matplotlib", "Anvil", "Google Colab"],
     challenges: "Connecting the model to Anvil was new territory. It was the first time I had to use and connect the model outside of the Colab notebook, which added a layer of complexity I hadn't dealt with before.",
     reflection: "Linking the model to a UI made everything feel more real. Up until this point, the projects had only been contained inside a notebook. Inputting the flower measurements myself and get a prediction back made me understand how machine learning fits into actual products.",
@@ -129,7 +129,7 @@ export const projectsData: Project[] = [
       print("Confusion Matrix:\\n", confusion_matrix(y_test, y_pred))
       print("Classification Report:\\n", classification_report(y_test, y_pred))`,
     codeDescription: "One hidden layer of 10 neurons is enough for a simple three-class problem like this. Adding stratify to the split makes sure each species shows up proportionally in both the training and test sets.",
-    screenshots: [],
+    screenshots: ["/iris_NN.png"],
     techStack: ["Python", "scikit-learn", "MLPClassifier", "Matplotlib", "Google Colab"],
     challenges: "The syntax was still new but nothing really blocked me. The harder part was understanding that two models can have the same accuracy score but still perform differently depending on which classes you look at.",
     reflection: "This was the first time I had to pick a winner between two models. It made me realize that accuracy is just one number. To actually understand how a model is doing, you have to dig into the breakdown by class.",
@@ -161,7 +161,7 @@ export const projectsData: Project[] = [
       model.compile(optimizer='adam', loss='mse')
       model.fit(X_train, y_train, validation_split=0.2, epochs=300, batch_size=16)`,
     codeDescription: "StandardScaler normalizes the input features before they reach the network, which helps the model train more smoothly. The network has two hidden layers followed by a single output neuron for the price prediction. Training for 300 epochs instead of 100 showed only a small improvement in loss, which hinted that the model was close to its limit with these features.",
-    screenshots: [],
+    screenshots: ["/boston1.png", "/boston2.png", "/boston3.png"],
     techStack: ["Python", "scikit-learn", "Keras", "StandardScaler", "MLPRegressor", "Seaborn", "Matplotlib", "Pandas", "Anvil", "Google Colab"],
     challenges: "The guided questions in the activity made it harder to just skim through the code. Having to stop and answer things like what the loss was at epoch 100, or how many input features the model expected, forced a closer look at what was actually happening at each step.",
     reflection: "I came out of this knowing that preprocessing is not just a box to check. Scaling the data, picking the right features, and understanding what the loss curve is telling you all affect how well the model performs. There is still more to explore there.",
@@ -197,7 +197,7 @@ export const projectsData: Project[] = [
       model.save("boston_model.keras")
       joblib.dump(scaler, "scaler.save")`,
     codeDescription: "Three versions of the model are trained and logged into a results table. Early stopping cuts training short when the validation loss stops improving, which helps avoid overfitting. Once the best model is identified, it gets saved as a Keras file alongside the scaler so they can both be loaded for the Streamlit app.",
-    screenshots: [],
+    screenshots: ["/boston_strlit.png"],
     techStack: ["Python", "Keras", "TensorFlow", "scikit-learn", "StandardScaler", "Streamlit", "Anvil", "Joblib", "Pandas", "Google Colab"],
     challenges: "Figuring out which model configuration actually performed better took some trial and error. The deployment side was just as tricky, getting the saved model and scaler to load correctly in Streamlit, and making sure the inputs were scaled the same way during prediction as they were during training.",
     reflection: "This was the first time I saw a project through from start to finish. Building the model was one thing, but improving it, saving it, and putting it on a website made the whole process more complete. It changed how I think about machine learning projects.",
@@ -233,7 +233,7 @@ export const projectsData: Project[] = [
     model.compile(optimizer=optimizer, loss='sparse_categorical_crossentropy', metrics=['sparse_categorical_accuracy'])
     model.fit(X_train, y_train, epochs=20)`,
     codeDescription: "Pixel values are divided by 255 to bring them into a 0 to 1 range before training. The network stacks convolutional layers to pick up on shapes and patterns, then flattens the output into a dense layer for classification. Dropout randomly switches off 20% of neurons during training to stop the model from memorizing the training data.",
-    screenshots: [],
+    screenshots: ["/cifar1.png", "/cifar2.png", "/cifar3.png", "/cifar4.png"],
     techStack: ["Python", "TensorFlow", "Keras", "CNN", "CIFAR-10", "Matplotlib", "NumPy", "PIL", "Google Colab"],
     challenges: "Most of the concepts here were brand new. Epochs, dropout, image normalization, and how convolutional layers actually work all had to be understood from scratch. Working with images instead of spreadsheet data was new.",
     reflection: "This was the activity that made the machine learning field feel a lot bigger. Seeing the model correctly identify a cat or an airplane from an image I uploaded myself was cool I thought, and also made me realize that ML can be more than numbers in a table.",
@@ -269,7 +269,7 @@ export const projectsData: Project[] = [
     with open('model.tflite', 'wb') as f:
         f.write(tflite_model)`,
     codeDescription: "The model loads pre-trained weights instead of training from scratch. Predictions are made by resizing the image, normalizing pixel values, and running it through the model. A score below 0.5 means dog, above 0.5 means cat. The TFLite export compresses the model into a format that runs efficiently in a Flask web app.",
-    screenshots: [],
+    screenshots: ["/dogcat1.png", "/dogcat2.png", "/dogcat3.png"],
     techStack: ["Python", "TensorFlow", "Keras", "CNN", "TFLite", "Flask", "Anvil", "PIL", "NumPy", "Google Colab"],
     challenges: "TFLite was the one new thing here. Converting and exporting the model took some figuring out, but since everything else was familiar from the CIFAR-10 activity, it was easier to focus on just that part.",
     reflection: "This activity made it clear that different problems require different model setups. I learned when to use a binary classifier and a multi-class one, when to use sigmoid versus softmax, and when to use binary crossentropy versus categorical.",
@@ -295,7 +295,7 @@ export const projectsData: Project[] = [
         x             : select list item [ get facePoint ] at index 1
         y             : select list item [ get facePoint ] at index 2`,
     codeDescription: "This block defines a reusable procedure that takes an image and a face point, then moves the image sprite to the X and Y coordinates of that landmark. Index 1 is the X position, index 2 is the Y position. Every time the face moves, this runs again and repositions the filter accordingly.",
-    screenshots: [],
+    screenshots: ["/mit_app.png"],
     techStack: ["MIT App Inventor", "FaceExtension", "Facemesh", "Block-based Programming"],
     challenges: "The environment was new since everything up to this point had been Python notebooks. MIT App Inventor works differently, but the instructions were clear and it was easy to pick up. The bigger adjustment was thinking in blocks instead of lines of code.",
     reflection: "Facemesh was interesting because it was the first time I worked with something fully live. The AI is not just analyzing a static image, it is actively tracking a person's face as they move. That felt different from everything else we had done, and it made me appreciate how much is happening under the hood in something as casual as a Snapchat filter.",

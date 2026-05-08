@@ -9,7 +9,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Avant Basic Portfolio | PTF04",
+  title: "Gio Ferreras Portfolio | PTF04",
   description: "Digital Portfolio for PTF04 showcasing projects.",
 };
 
